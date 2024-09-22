@@ -3,7 +3,7 @@ import TopNavbar from './Navbar';
 
 const Home = () => {
   return (
-    <div className="AppPage">
+    <div className="Home">
       <TopNavbar />
       <div className="container">
         <h1>Portfolio</h1>

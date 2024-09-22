@@ -10,14 +10,16 @@ import ContactPage from './Contact';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Home/>} />
-        <Route path="/about" element={<AboutPage/>} />
-        <Route path="/projects" element={<ProjectsPage/>} />
-        <Route path="/contact" element={<ContactPage/>} />
-      </Routes>
-    </BrowserRouter>
+    <div className='App'>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Home/>} />
+          <Route path="/about" element={<AboutPage/>} />
+          <Route path="/projects" element={<ProjectsPage/>} />
+          <Route path="/contact" element={<ContactPage/>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 
