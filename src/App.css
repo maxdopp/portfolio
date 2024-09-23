@@ -10,32 +10,7 @@
   background-color: var(--black);
   min-height: 100dvh;
   color: var(--white);
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-block: 20px;
-  background-color: var(--darkred);
-}
-
-.navbar ul {
-  display: flex;
-  list-style: none;
-  justify-content: space-evenly;
-  padding: 0;
-  margin: 0;
-  width: 50%;
-}
-
-.navbar ul li a{
-  text-decoration: none;
-  color: var(--black);
-  font-size: 20px;
-  background-color: var(--white);
-  padding: 5px 10px;
-  border-radius: 8px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .container {
