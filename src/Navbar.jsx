@@ -11,7 +11,7 @@ function TopNavBar() {
   
   return (
     <nav className='navbar'>
-      <div className="logo">Logo</div>
+      <div className="logo">Max Dopp</div>
       <div className="hamburger-menu" onClick={toggleMenu}>
         <div className={`menu-toggle ${isOpen ? 'open'  : ''}`}></div>
       </div>
