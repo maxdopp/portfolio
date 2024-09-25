@@ -13,15 +13,12 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.App img {
-  width: 100%;
-  height: calc(100dvh - 4rem - 30px);
-  opacity: .5;
-  z-index: 0;
-}
-
 .container {
+  display: flex;
   text-align: center;
+  min-height: calc(96dvh - 30px);
+  align-items: center;
+  justify-content: center;
 }
 
 .matrix-effect {
@@ -29,13 +26,14 @@
   justify-content: space-evenly;
   position: absolute;
   width: 100vw;
-  height: calc(100dvh - 2rem - 30px);
-  top: calc(2rem + 30px);
+  height: calc(96dvh - 30px);
+  top: calc(4dvh + 30px);
   overflow: hidden;
 }
 
 .matrix-string{
-  text-align: left;
+  visibility: visible;
+  text-align: justify;
   writing-mode: vertical-rl;
   text-orientation: upright;
   color: green;
@@ -43,31 +41,34 @@
   font-size: 1.5rem;
   font-weight: bold;
   user-select: none;
-  z-index: 1;
+  pointer-events: none;
+  z-index: 0;
+  width: 200dvh;
+  overflow: hidden;
 }
 
-.matrix-effect .top{
+.top.matrix-string{
   animation: scroll-down-top 5s linear infinite;
 }
 
-.matrix-effect .bottom{
+.bottom.matrix-string{
   animation: scroll-down-bottom 5s linear infinite;
 }
 
 @keyframes scroll-down-top {
   0% {
-    transform: translateY(0);
+    transform: translateY(calc(-96dvh + 30px));
   }
   100% {
-    transform: translateY(100dvh);
+    transform: translateY(0%);
   }
 }
 
 @keyframes scroll-down-bottom {
   0% {
-    transform: translateY(-100dvh);
+    transform: translateY(0%);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(calc(96dvh - 30px));
   }
 }

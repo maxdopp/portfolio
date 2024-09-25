@@ -4,26 +4,22 @@ import TopNavBar from './Navbar';
 
 const Home = () => {
   const [matrixStrings, setMatrixStrings] = useState(
-    Array(30).fill('').map(() => randomString(48))
+    Array(20).fill('').map(() => generateInitialString(25))
   );
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setMatrixStrings(matrixStrings.map(currentItem => randomString(48, currentItem)));
-    }, 30); // update every 50ms
+      setMatrixStrings(matrixStrings.map(updateString));
+    }, 50); // update every 50ms
     return () => clearInterval(intervalId);
   }, [matrixStrings]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setMatrixStrings(matrixStrings.map(() => generateWhitespace(48)));
-    }, 5000); // update whitespaces every 100ms
-    return () => clearInterval(intervalId);
-  }, [setMatrixStrings]);
-
   return (
-    <div className="App">
+    <div className="Home">
       <TopNavBar/>
+      <div className='container'>
+
+      </div>
       <div className="matrix-effect top">
         {matrixStrings.map((string, index) => (
           <div key={index} className="matrix-string top">
@@ -38,42 +34,41 @@ const Home = () => {
           </div>
         ))}
       </div>
-      <img src='https://i.redd.it/ebozhm1obw691.jpg'/>
     </div>
   );
 };
 
 export default Home;
 
-const generateWhitespace = (length) => {
-  const characters = 'abcdefghijklmnopqrstuvwxyz0123456789アイウエオガギグゲゴザジズゼゾダヂツテトナヌノバヒピブヘペボマムモヤユヨリレヮヰヲヴヶヸヺ                             ';
+const generateInitialString = (length) => {
+  const characters = 'abcdefghijklmnopqrstuvwxyz0123456789アイウエオガギグゲゴザジズゼゾダヂツテトナヌノバヒピブヘペボマムモヤユヨリレヮヰヲヴヶヸヺ';
   let result = '';
+
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
-  // Replace a random number of characters at the end with spaces
-  const numSpaces = Math.floor(Math.random() * (length / 2)); // replace up to half of the string with spaces
-  const spaceLocation = Math.floor(Math.random() * (length -  numSpaces));
 
-  result = ' '.repeat(numSpaces/2) + result.substring(0, spaceLocation) + ' '.repeat(numSpaces) + result.substring(spaceLocation + numSpaces, length - numSpaces/4) + ' '.repeat(numSpaces/2);
+  const numSpaces = Math.floor(Math.random() * (length / 1.5)); // replace up to half of the string with spaces
+  const spaceLocation = Math.floor(Math.random() * (length - numSpaces));
+
+  result = ' '.repeat(numSpaces/2) + result.substring(0, spaceLocation) + ' '.repeat(numSpaces) + result.substring(spaceLocation + numSpaces + numSpaces/2, length - numSpaces/3) + ' '.repeat(numSpaces/2);
   return result;
 };
 
-const randomString = (length, string) => {
-  console.log([typeof string, string]);
+const updateString = (string) => {
   const characters = 'abcdefghijklmnopqrstuvwxyz0123456789アイウエオガギグゲゴザジズゼゾダヂツテトナヌノバヒピブヘペボマムモヤユヨリレヮヰヲヴヶヸヺ';
   let result = '';
-  for (let i = 0; i < length; i++) {
-    if ((typeof string === 'string') && (string.split("")[i] != ' ')) {
+
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] !== ' ') {
       result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    else{
+    } else {
       result += ' ';
     }
   }
-  return result;
-}
 
+  return result;
+};
 /*
 'abcdefghijklmnopqrstuvwxyz0123456789アイウエオガギグゲゴザジズゼゾダヂツテトナヌノバヒピブヘペボマムモヤユヨリレヮヰヲヴヶヸヺ'
 'abcdefghijklmnopqrstuvwxyz0123456789アイウエオガギグゲゴザジズゼゾダヂツテトナヌノバヒピブヘペボマムモヤユヨリレヮヰヲヴヶヸヺ                             '
